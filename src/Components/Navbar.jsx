@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.jpg'
+import menu from '../assets/menu.png'
 
 const Navbar = () => {
   
@@ -13,14 +14,18 @@ const Navbar = () => {
         <h1 className="text-4xl px-1">xora</h1>
       </div>
       
-      <div className="flex items-center gap-[24px] text-[18px]">
-        <p>About</p>
-        <p>Blog</p>
+      <ul className="hidden xl:flex items-center gap-[24px] text-[18px]">
+        <li className="text-3xl text-black font-semibold hover:text-blue-400 hover:scale-100 transition-all">About</li>
+        <li className="text-3xl text-black font-semibold hover:text-blue-400 hover:scale-100 transition-all">Blog</li>
+      </ul>
+      
+      <div className="grid place-items-center xl:hidden">
+        <img src={menu}
+        alt="menu"
+        className="w-[32px] h-[32px] object-cover"
+        />
       </div>
       
-      <div className="w-[6em] h-[3em]">
-        <button className="w-full h-full bg-black text-white border-0 outline-0 rounded-lg text-2xl px-[4px] py-[2px] transition">Log in</button>
-      </div>
     </div>
   )
 }
