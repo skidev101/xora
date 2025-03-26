@@ -5,7 +5,7 @@ import menu from '../assets/menu.png'
 const Navbar = () => {
   
   return (
-    <div className="flex justify-between items-center w-full h-max border-black border-b px-5 py-10">
+    <header className="fixed top-0 left-0 flex justify-between items-center w-full h-max border-black border-b px-3 py-5 xl:px-5 py-10">
       <div className="flex items-center">
         <img src={logo}
         alt="logo"
@@ -19,14 +19,11 @@ const Navbar = () => {
         <li className="text-3xl text-black font-semibold hover:text-blue-400 hover:scale-100 transition-all">Blog</li>
       </ul>
       
-      <div className="grid place-items-center xl:hidden">
-        <img src={menu}
-        alt="menu"
-        className="w-[32px] h-[32px] object-cover"
-        />
+      <div className="grid place-items-center xl:hidden text-[30px]">
+        <i className="fa fa-bars"></i>
       </div>
       
-    </div>
+    </header>
   )
 }
 
