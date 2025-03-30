@@ -3,7 +3,7 @@ import React from 'react'
 const Inputfield = ({ placeholder }) => {
   
   return (
-    <div className="w-full h-[2.8em] border focus:border-black rounded-[50px] px-2">
+    <div className="w-full h-full border hover:border-emerald-400 rounded-[50px] px-2">
       <input type="email"
       placeholder={placeholder}
       required
