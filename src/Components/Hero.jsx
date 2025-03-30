@@ -62,7 +62,7 @@ const Hero = () => {
         onSubmit={waitlistCheck}>
           <Inputfield placeholder="Enter your email"
           value={userEmail}
-          onChange={() => setUserEmail(userEmail)}/>
+          onInput={() => setUserEmail(userEmail)}/>
           <Button value="Join" icon="fa fa-arrow-right" />
         </form>
       </div>
