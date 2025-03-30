@@ -16,7 +16,7 @@ const Header = () => {
         <h1 className="text-[1.5em] px-1">xora</h1>
       </div>
       
-      <ul className="hidden xl:flex items-center gap-[24px] text-[18px] mr-2">
+      <ul className="hidden xl:flex items-center gap-[24px] text-[18px] mr-4">
         <li className="text-[1.1em] font-semibold hover:text-emerald-400 list-none hover:scale-100 transition-all">About</li>
         <li className="text-[1.1em] font-semibold hover:text-emerald-400 list-none hover:scale-100 transition-all">Blog</li>
       </ul>
@@ -25,8 +25,8 @@ const Header = () => {
         <i className="fa fa-bars text-[20px] pr-2" 
         onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
       </div>
-      <ul className={`absolute top-0 ${isMenuOpen ? "right-0" : "right-[-80%]"} xl:hidden flex justify-center items-center flex-col gap-5 backdrop-blur w-full h-[100vh] transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
-       style={{transform: "right 2s ease-out, transition 2s ease, opacity 2s ease"}}>
+      <ul className={`absolute top-0 ${isMenuOpen ? "right-0" : "right-[-100%]"} xl:hidden flex justify-center items-center flex-col gap-5 backdrop-blur w-full h-[100vh] transform transition-transform ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
+       style={{transform: "right 0.5s ease-out, transition 0.5s ease, opacity 0.5s ease"}}>
         <i className="fa fa-bars text-white text-[16px] absolute top-6 right-5"
         onClick={() => setIsMenuOpen(!isMenuOpen)}></i>
         <li className="list-none w-full p-5 text-center text-2xl text-white hover:text-emerald-400 transition transition-all">About</li>
