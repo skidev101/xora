@@ -3,29 +3,26 @@ import Inputfield from './Inputfield'
 import Button from './Button'
 import ShinyText from './ShinyText'
 import CountUp from './CountUp'
-import Confetti from './Confetti'
+import Confetti from './ConfettiAni'
 
 const Hero = () => {
   const [userEmail, setUserEmail] = useState('');
   const [message, setMessage] = useState('');
-  
-  useEffect(() => {
-    if (saveToLocalStorage) {
-      return <Confetti />
-    }
-  }, [saveToLocalStorage]);
+  const [isAddedToWaitlist, setIsAddedToWaitlist] = useState(false);
   
   const saveToLocalStorage = () => {
     let emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
     emailList.push(userEmail);
     localStorage.setItem('waitlist', JSON.stringify(emailList));
     setMessage('You are now on the waitlist');
+    setIsAddedToWaitlist(true);
   }
   
   const clearMessage = () => {
     setTimeout(() => {
         setMessage('');
-      }, 3000);
+        setIsAddedToWaitlist(false);
+      }, 7000);
   }
   
   const waitlistCheck = (e) => {
@@ -43,6 +40,7 @@ const Hero = () => {
   
   return (
     <div className="w-full min-h-[100vh] flex justify-center items-center flex-col text-white bg-black px-1.5 mt-5 ">
+      {isAddedToWaitlist && <Confetti />}
       
       <div className="flex justify-center items-center flex-col text-center">
          <p className="text-emerald-400 py-2">{message}</p>
