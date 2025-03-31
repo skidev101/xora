@@ -1,18 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Inputfield from './Inputfield'
 import Button from './Button'
 import ShinyText from './ShinyText'
 import CountUp from './CountUp'
-import Waves from './Waves';
+import Confetti from './Confetti'
 
 const Hero = () => {
   const [userEmail, setUserEmail] = useState('');
   const [message, setMessage] = useState('');
   
+  useEffect(() => {
+    if (saveToLocalStorage) {
+      return <Confetti />
+    }
+  }, [saveToLocalStorage]);
+  
   const saveToLocalStorage = () => {
-    const emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
+    let emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
     emailList.push(userEmail);
-    localStorage.setItem('waitlist', JSON.stringify(userEmail));
+    localStorage.setItem('waitlist', JSON.stringify(emailList));
+    setMessage('You are now on the waitlist');
+  }
+  
+  const clearMessage = () => {
+    setTimeout(() => {
+        setMessage('');
+      }, 3000);
   }
   
   const waitlistCheck = (e) => {
@@ -20,9 +33,11 @@ const Hero = () => {
     const emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
     if (emailList.includes(userEmail)) {
       setMessage(`You're already on the waitlist`);
+      clearMessage();
     } else {
-      setMessage('You are now on the waitlist');
       saveToLocalStorage();
+      clearMessage();
+      setUserEmail('');
     }
   }
   
@@ -30,8 +45,8 @@ const Hero = () => {
     <div className="w-full min-h-[100vh] flex justify-center items-center flex-col text-white bg-black px-1.5 mt-5 ">
       
       <div className="flex justify-center items-center flex-col text-center">
+         <p className="text-emerald-400 py-2">{message}</p>
         <div className="flex justify-center items-center w-max bg-[#212121] rounded-[50px]">
-          <p className="text-emerald-400 py-2">{message}</p>
           <ShinyText text="Simple Course platform with xora" 
           disabled={false}
           speed={3} 
@@ -60,7 +75,7 @@ const Hero = () => {
         onSubmit={waitlistCheck}>
           <Inputfield placeholder="Enter your email"
           value={userEmail}
-          onInput={(e) => setUserEmail(e.target.value)}/>
+          onChange={(e) => setUserEmail(e.target.value)}/>
           <Button value="Join" icon="fa fa-arrow-right" />
         </form>
       </div>
