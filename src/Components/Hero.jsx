@@ -10,22 +10,20 @@ const Hero = () => {
   const [message, setMessage] = useState('');
   
   const saveToLocalStorage = () => {
-    localStorage.setItem('email', JSON.stringify(userEmail));
+    const emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
+    emailList.push(userEmail);
+    localStorage.setItem('waitlist', JSON.stringify(userEmail));
   }
   
-  const waitlistCheck = () => {
-    let email;
-    if (localStorage.getItem(userEmail) !== '') {
-      email = JSON.parse(localStorage.getItem(userEmail));
-      if (userEmail == email) {
-        setMessage(`You're already on the waitlist`);
+  const waitlistCheck = (e) => {
+    e.preventDefault();
+    const emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
+    if (emailList.includes(userEmail)) {
+      setMessage(`You're already on the waitlist`);
     } else {
-        setMessage('You are now on the waitlist');
-      }
-    } else {
+      setMessage('You are now on the waitlist');
       saveToLocalStorage();
     }
-    
   }
   
   return (
@@ -62,7 +60,7 @@ const Hero = () => {
         onSubmit={waitlistCheck}>
           <Inputfield placeholder="Enter your email"
           value={userEmail}
-          onInput={() => setUserEmail(userEmail)}/>
+          onInput={(e) => setUserEmail(e.target.value)}/>
           <Button value="Join" icon="fa fa-arrow-right" />
         </form>
       </div>
