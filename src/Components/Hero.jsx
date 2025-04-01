@@ -16,6 +16,7 @@ const Hero = () => {
     localStorage.setItem('waitlist', JSON.stringify(emailList));
     setMessage('You are now on the waitlist');
     setIsAddedToWaitlist(true);
+    console.log(message);
   }
   
   const clearMessage = () => {
@@ -30,6 +31,7 @@ const Hero = () => {
     const emailList = JSON.parse(localStorage.getItem('waitlist')) || [];
     if (emailList.includes(userEmail)) {
       setMessage(`You're already on the waitlist`);
+      console.log(message)
       clearMessage();
     } else {
       saveToLocalStorage();
