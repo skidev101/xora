@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Images from './Images'
+import bg1 from '../assets/bg1.png'
+import bg2 from '../assets/bg2.png'
 import Inputfield from './Inputfield'
 import Button from './Button'
 import ShinyText from './ShinyText'
@@ -44,6 +47,8 @@ const Hero = () => {
     <div className="w-full min-h-[100vh] flex justify-center items-center flex-col text-white bg-black px-1.5 mt-5 ">
       {isAddedToWaitlist && <Confetti />}
       
+      <Images src={bg1} className="object-center absolute z-[0] w-[100px] h-[100px] top-9 right-2 xl:w-[150px] xl:h-[150px]" />
+      
       <div className="flex justify-center items-center flex-col text-center">
          <p className="text-emerald-400 py-2">{message}</p>
         <div className="flex justify-center items-center w-max bg-[#212121] rounded-[50px]">
@@ -53,6 +58,8 @@ const Hero = () => {
           className='px-4 py-1.5 text-[14px] text-center'
           />
         </div>
+        
+        <Images src={bg2} className="object-center absolute z-[-1] w-[80px] h-[80px] top-12 left-1" />
         
         <h1 className="text-4xl font-bold py-1.5 xl:text-5xl py-3">Create a course <br/> with xora</h1>
         
