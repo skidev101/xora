@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 const App = () => {
   
   return (
-    <div>
+    <div className="bg-black"> 
       <ClickSpark
         sparkColor='#fff'
         sparkSize={10}
