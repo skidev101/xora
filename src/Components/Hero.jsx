@@ -61,7 +61,7 @@ const Hero = () => {
         
         <Images src={bg2} className="object-center absolute z-[-1] w-[80px] h-[80px] top-12 left-1" />
 
-        <ShinyText text=`Create a course {<br />} with xora`
+        <ShinyText text="Create a course {<br />} with xora"
           disabled={false}
           speed={1.5} 
           className='text-4xl font-bold py-1.5 xl:text-5xl py-3'
